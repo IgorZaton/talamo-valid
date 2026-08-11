@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "talamo-valid"
+version = "0.1.0"
+description = "Design-time Talamo C1 compatibility checks for agents and MCP clients"
+authors = ["Igor Zaton"]
+readme = "README.md"
+packages = [
+  { include = "talamo_valid" },
+  { include = "talamo_valid_mcp" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mcp = { version = ">=1.0,<2", optional = true }
+
+[tool.poetry.extras]
+mcp = ["mcp"]
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0"
+mcp = ">=1.0,<2"
+
+[tool.poetry.scripts]
+talamo-valid = "talamo_valid.cli:main"
+talamo-valid-mcp = "talamo_valid_mcp.server:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -7,6 +7,7 @@ readme = "README.md"
 packages = [
   { include = "talamo_valid" },
   { include = "talamo_valid_mcp" },
+  { include = "heimdall" },
 ]
 
 [tool.poetry.dependencies]
@@ -23,6 +24,9 @@ mcp = ">=1.0,<2"
 [tool.poetry.scripts]
 talamo-valid = "talamo_valid.cli:main"
 talamo-valid-mcp = "talamo_valid_mcp.server:main"
+
+[tool.poetry.plugins."heimdall.providers"]
+"talamo.valid" = "heimdall.talamo.valid:provider"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
